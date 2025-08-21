@@ -5,6 +5,7 @@
 
 ## Approach
 （フロー図 + 説明）
+https://github.com/peanuts1414/Detect-anomaly-with-Isolation-Forest-in-manufacturing/issues/1#issue-3340006737
 
 ## Results
 （比較グラフ + 簡単な要約）
