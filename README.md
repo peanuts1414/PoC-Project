@@ -44,6 +44,14 @@
 - matplotlib 3.5.2
 - scikit-learn 1.0.2
 - torch 2.3.0
+
+requirements.txt\
+numpy==1.26.4
+pandas==2.2.2
+matplotlib==3.8.4
+scikit-learn==1.4.2
+torch==2.3.0
+
   
 ## 著者
 　鈴木一樹
