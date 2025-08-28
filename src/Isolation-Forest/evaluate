@@ -1,0 +1,57 @@
+# eval_if.py
+import pandas as pd
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
+import matplotlib.pyplot as plt
+import joblib
+
+# ===== 設定 =====
+eval_features_csv = "eval_features_scaled.csv"
+threshold_if = -0.1  # Isolation Forest 判定の閾値
+model_save_path = "isolation_forest_model.pkl"
+scaler_save_path = "scaler_if.pkl"
+
+# ===== データ読み込み =====
+eval_df = pd.read_csv(eval_features_csv)
+feature_cols = [col for col in eval_df.columns if col not in ["source_file","label"]]
+y_eval = eval_df["label"].astype(int).to_numpy()
+
+# ===== 学習済みモデルとスケーラー読み込み =====
+model_if = joblib.load(model_save_path)
+scaler = joblib.load(scaler_save_path)
+
+# ===== 標準化 =====
+X_eval = scaler.transform(eval_df[feature_cols])
+
+# ===== 予測 =====
+scores_if = model_if.decision_function(X_eval)
+preds_if = [1 if s >= threshold_if else -1 for s in scores_if]
+
+# ===== 評価 =====
+metrics = {
+    "Accuracy": accuracy_score(y_eval, preds_if),
+    "Precision": precision_score(y_eval, preds_if, pos_label=-1, zero_division=0),
+    "Recall": recall_score(y_eval, preds_if, pos_label=-1, zero_division=0),
+    "F1": f1_score(y_eval, preds_if, pos_label=-1, zero_division=0)
+}
+print("[INFO] 評価結果")
+print(metrics)
+
+# ===== 混同行列 & レポート =====
+cm = confusion_matrix(y_eval, preds_if, labels=[1,-1])
+print("\nConfusion Matrix:")
+print(cm)
+print("\nClassification Report:")
+print(classification_report(y_eval, preds_if, labels=[1,-1], target_names=["Normal(1)","Anomaly(-1)"]))
+
+# ===== ヒストグラム可視化 =====
+plt.figure(figsize=(8,6))
+plt.hist(scores_if[y_eval==1], bins=30, alpha=0.6, label="Normal")
+plt.hist(scores_if[y_eval==-1], bins=30, alpha=0.6, label="Abnormal")
+plt.axvline(threshold_if, color="red", linestyle="--", label=f"Threshold={threshold_if}")
+plt.title("Isolation Forest Scores (with threshold)")
+plt.xlabel("Decision function score")
+plt.ylabel("Count")
+plt.legend()
+plt.tight_layout()
+plt.savefig("isolation_forest_scores.png")
+print("[INFO] グラフ保存 → isolation_forest_scores.png")
