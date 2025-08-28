@@ -1,0 +1,28 @@
+# ===== 特徴量正規化スクリプト =====
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+# ===== CSVパス =====
+train_csv = "train_features.csv"
+eval_csv  = "eval_features.csv"
+
+# ===== 読み込み =====
+train_df = pd.read_csv(train_csv)
+eval_df  = pd.read_csv(eval_csv)
+
+# ===== 特徴量列の自動抽出 =====
+feature_cols = [col for col in train_df.columns if col not in ["source_file","label"]]
+print(f"[INFO] 正規化対象の特徴量列: {feature_cols}")
+
+# ===== 標準化 =====
+scaler = StandardScaler()
+train_df[feature_cols] = scaler.fit_transform(train_df[feature_cols])
+eval_df[feature_cols]  = scaler.transform(eval_df[feature_cols])
+
+# ===== 保存 =====
+train_df.to_csv("train_features_scaled.csv", index=False, encoding="utf-8-sig")
+eval_df.to_csv("eval_features_scaled.csv", index=False, encoding="utf-8-sig")
+
+print("[INFO] 正規化後のCSVを保存しました")
+print("  - train_features_scaled.csv")
+print("  - eval_features_scaled.csv")
