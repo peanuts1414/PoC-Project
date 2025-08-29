@@ -4,6 +4,8 @@
 本ドキュメントは、製造データを対象とした異常検知 PoC の実装内容を整理したものです。  
 リポジトリ構成、使用データ、実装方法、評価結果の概要を記載します。
 
+<img width="1398" height="950" alt="Image" src="https://github.com/user-attachments/assets/0e07e116-24f9-4695-b5ba-fa0c902680d3" />
+
 ---
 
 ## 2. データ
