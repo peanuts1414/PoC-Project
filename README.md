@@ -7,7 +7,7 @@
 
 ## アプローチ
 
-![Image](https://github.com/user-attachments/assets/237331f7-0866-4ab4-b277-a182c86a886b)
+<img width="1060" height="691" alt="Image" src="https://github.com/user-attachments/assets/fabce3cb-9a9c-454b-bafe-760ddfbe0d9b" />
 
 ・サーボモータが動作したときの電流値のデータをPLCから取得しました。\
 　取得したデータから前処理を施し、各モデルに適応しやすいように行います。
