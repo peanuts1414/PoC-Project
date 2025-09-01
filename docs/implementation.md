@@ -10,30 +10,30 @@
 PoC-Project\
 ├─ READNE.md\
 ├─ Results/\
-│   ├─ results of Autoencoder.png\
-│   ├─ results of Isolation Forest.png\
-│   └─ results of One-Class-SVM.png\
+│　　├─ results of Autoencoder.png\
+│　　├─ results of Isolation Forest.png\
+│　　└─ results of One-Class-SVM.png\
 ├─ data/\
-│   ├─ eval_features_scaled.csv  # 元データ\
-│   └─ train_features_scaled.csv # 前処理済みデータ\
+│　　├─ eval_features_scaled.csv　  # 元データ\
+│　　└─ train_features_scaled.csv　 # 前処理済みデータ\
 ├─ docs/\
-│   └─ implementation.md        # 本ドキュメント\
+│　　└─ implementation.md　        # 本ドキュメント\
 ├─ notebooks/\
-│   └─ PoC_walkthrough.ipynb  # 実装に用いたスクリプト\
+│　　└─ PoC_walkthrough.ipynb　  # 実装に用いたスクリプト\
 ├─ src/\
-│   ├─ Autoencoder\
-|   |   ├─ evaluate.py     # 評価スクリプト\
-|   |   └─ train.py        # Autoencoder 学習\
-│   ├─ Isolation-Forest\
-|   |   ├─ evaluate.py     # 評価スクリプト\
-|   |   └─ train.py        # Isolation Forest 学習\
-│   ├─ One-Class-SVM\
-|   |   ├─ evaluate.py     # 評価スクリプト\
-|   |   └─ train.py        # One-Class-SVM 学習\
-│   ├─ preprocessing\
-|   |   ├─ generate-JSON.py      # JSONファイル作成スクリプト\
-|   |   ├─ generate-features.py  # 特徴量作成スクリプト\
-|   |   └─normalize-features.py  # 特徴量正規化スクリプト\
+│　　├─ Autoencoder\
+|　　|　　├─ evaluate.py　     # 評価スクリプト\
+|　　|　　└─ train.py　        # Autoencoder 学習\
+│　　├─ Isolation-Forest\
+|　　|　　├─ evaluate.py　     # 評価スクリプト\
+|　　|　　└─ train.py　        # Isolation Forest 学習\
+│　　├─ One-Class-SVM\
+|　　|　　├─ evaluate.py　     # 評価スクリプト\
+|　　|　　└─ train.py　        # One-Class-SVM 学習\
+│　　├─ preprocessing\
+|　　|　　├─ generate-JSON.py　      # JSONファイル作成スクリプト\
+|　　|　　├─ generate-features.py　  # 特徴量作成スクリプト\
+|　　|　　└─normalize-features.py　  # 特徴量正規化スクリプト\
 └─ requirements.txt         # 依存ライブラリ
 
   
