@@ -22,6 +22,13 @@
 
 ![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)
 
+
+### スコアについて
+Accuracy：全体のうち、正しく分類できた割合\
+Precision：異常と判定した中で、正しく異常だった割合\
+Recall：実際の異常のうち、正しく検出できた割合\
+F1-score：PrecisionとRecallのバランスをとった評価指標
+
  
  ◆モデル特性◆
 - **Isolation Forest**：学習・推論速度に優れ、リアルタイム監視や大規模データでの運用に向いています。\
