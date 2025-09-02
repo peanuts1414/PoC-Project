@@ -56,6 +56,7 @@ PoC-Project\
 ◆**評価結果**◆\
 　\
 ![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)
+<img width="1887" height="546" alt="Image" src="https://github.com/user-attachments/assets/6bafb5f8-0ef3-4ef7-8726-903180a2394b" />
  
 ---
 
