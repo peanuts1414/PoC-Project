@@ -4,9 +4,10 @@
 本ドキュメントは、製造データを対象とした異常検知 PoC の実装内容を整理したものです。  
 目的、リポジトリ構成、使用データ、実装方法、評価結果の概要を記載します。
 
-- **目的**：製造データの異常検知をPoCとして試すことを目的にこのPoCを作成しました。
-　　
-- **リポジトリ構成**\
+ ● **目的**：製造データの異常検知をPoCとして試すことを目的にこのPoCを作成しました。\
+　\
+◆**リポジトリ構成**◆\
+　\
 PoC-Project\
 ├─ READNE.md\
 ├─ Results/\
@@ -34,12 +35,24 @@ PoC-Project\
 |　　|　　├─ generate-JSON.py　      # JSONファイル作成スクリプト\
 |　　|　　├─ generate-features.py　  # 特徴量作成スクリプト\
 |　　|　　└─normalize-features.py　  # 特徴量正規化スクリプト\
-└─ requirements.txt         # 依存ライブラリ
+└─ requirements.txt         # 依存ライブラリ\
+　\
+ ◆**使用データ**◆
+- モータ電流値
+- モータ速度
+- モータ現在値
 
-  
-
+◆**実装方法**◆\
+ \
 <img width="1398" height="950" alt="Image" src="https://github.com/user-attachments/assets/0e07e116-24f9-4695-b5ba-fa0c902680d3" />
 
+- 生データ：モータの電流値、速度、現在値をPLCからCSVデータで取得
+- データ前処理：データの整形（ウィンドウ化、特徴量生成）
+- モデル構築：Isolation Forest, One Class SVM, Autoencoderを使用
+- 学習：モデルが学習用の特徴量を基に学習
+- 推論：モデルが評価用の疑似異常データを含んだデータで、正常値と異常値を分離し判定
+- 評価指標：Accuracy,Precision,Recall,F1-scoreを用いて評価
+ 
 ---
 
 ## 2. データ
