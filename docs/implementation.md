@@ -5,7 +5,19 @@
 目的、リポジトリ構成、使用データ、実装方法、評価結果の概要を記載します。
 
  ● **目的**：製造データの異常検知をPoCとして試すことを目的にこのPoCを作成しました。\
-　\
+　
+
+◆**全体フロー**◆\
+ \
+<img width="1398" height="950" alt="Image" src="https://github.com/user-attachments/assets/0e07e116-24f9-4695-b5ba-fa0c902680d3" />
+
+- 生データ取得：モータの電流値、速度、位置情報をPLCからCSV形式で取得
+- データ前処理：ウィンドウ化や特徴量生成による整形
+- モデル構築：Isolation Forest, One Class SVM, Autoencoderを使用
+- 学習・推論：学習データでモデルを訓練し、評価データ（疑似異常を含む）で推論
+- 評価：Accuracy, Precision, Recall, F1-scoreで性能を評価\
+  
+ 
 ◆**リポジトリ構成**◆\
 　\
 PoC-Project\
@@ -42,17 +54,7 @@ PoC-Project\
 - モータ速度
 - モータ現在値
 
-◆**実装方法**◆\
- \
-<img width="1398" height="950" alt="Image" src="https://github.com/user-attachments/assets/0e07e116-24f9-4695-b5ba-fa0c902680d3" />
 
-- 生データ：モータの電流値、速度、現在値をPLCからCSVデータで取得
-- データ前処理：データの整形（ウィンドウ化、特徴量生成）
-- モデル構築：Isolation Forest, One Class SVM, Autoencoderを使用
-- 学習：モデルが学習用の特徴量を基に学習
-- 推論：モデルが評価用の疑似異常データを含んだデータで、正常値と異常値を分離し判定
-- 評価指標：Accuracy,Precision,Recall,F1-scoreを用いて評価\
-　\
 ◆**評価結果**◆\
 　\
 ![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)
