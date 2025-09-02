@@ -9,32 +9,32 @@
 ◆**リポジトリ構成**◆\
 　\
 PoC-Project\
-├─ READNE.md\
+├─ README.md\
 ├─ Results/\
-│　　├─ results of Autoencoder.png\
-│　　├─ results of Isolation Forest.png\
-│　　└─ results of One-Class-SVM.png\
+│　　├─ results_of_Autoencoder.png\
+│　　├─ results_of_Isolation Forest.png\
+│　　└─ results_of_One-Class-SVM.png\
 ├─ data/\
-│　　├─ eval_features_scaled.csv　  # 元データ\
-│　　└─ train_features_scaled.csv　 # 前処理済みデータ\
+│　　├─ eval_features_scaled.csv　  # 評価用データ（前処理済み）\
+│　　└─ train_features_scaled.csv　 # 学習用データ（前処理済み）\
 ├─ docs/\
-│　　└─ implementation.md　        # 本ドキュメント\
+│　　└─ implementation.md　        # 実装ドキュメント\
 ├─ notebooks/\
-│　　└─ PoC_walkthrough.ipynb　  # 実装に用いたスクリプト\
+│　　└─ PoC_walkthrough.ipynb　  # 実装の Jupyter Notebook\
 ├─ src/\
 │　　├─ Autoencoder\
-|　　|　　├─ evaluate.py　     # 評価スクリプト\
-|　　|　　└─ train.py　        # Autoencoder 学習\
+│　　│　　├─ evaluate.py　     # Autoencoder 評価\
+│　　│　　└─ train.py　        # Autoencoder 学習\
 │　　├─ Isolation-Forest\
-|　　|　　├─ evaluate.py　     # 評価スクリプト\
-|　　|　　└─ train.py　        # Isolation Forest 学習\
+│　　│　　├─ evaluate.py　     # Isolation Forest 評価\
+│　　│　　└─ train.py　        # Isolation Forest 学習\
 │　　├─ One-Class-SVM\
-|　　|　　├─ evaluate.py　     # 評価スクリプト\
-|　　|　　└─ train.py　        # One-Class-SVM 学習\
+│　　│　　├─ evaluate.py　     # One-Class-SVM 評価\
+│　　│　　└─ train.py　        # One-Class-SVM 学習\
 │　　├─ preprocessing\
-|　　|　　├─ generate-JSON.py　      # JSONファイル作成スクリプト\
-|　　|　　├─ generate-features.py　  # 特徴量作成スクリプト\
-|　　|　　└─normalize-features.py　  # 特徴量正規化スクリプト\
+│　　│　　├─ generate-JSON.py　      # JSONファイル作成\
+│　　│　　├─ generate-features.py　  # 特徴量作成\
+│　　│　　└─normalize-features.py　  # 特徴量正規化\
 └─ requirements.txt         # 依存ライブラリ\
 　\
  ◆**使用データ**◆
@@ -57,7 +57,11 @@ PoC-Project\
 　\
 ![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)
 <img width="1938" height="537" alt="Image" src="https://github.com/user-attachments/assets/7f991f7a-8d67-4782-9c37-e24e2315aeea" />
- 
+  
+- 評価結果の表を見るとどのモデルも高い精度を出せているとわかります。表からの評価だけでは選定しがたいです。
+- グラフを確認すると、どれだけ分離できているかがわかります。特に、Autoencoderは正常と異常をはっきりと分離されていることが視認できます。
+
+
 ---
 
 ## 2. データ
