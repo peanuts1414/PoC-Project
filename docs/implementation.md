@@ -51,9 +51,11 @@ PoC-Project\
 - モデル構築：Isolation Forest, One Class SVM, Autoencoderを使用
 - 学習：モデルが学習用の特徴量を基に学習
 - 推論：モデルが評価用の疑似異常データを含んだデータで、正常値と異常値を分離し判定
-- 評価指標：Accuracy,Precision,Recall,F1-scoreを用いて評価
+- 評価指標：Accuracy,Precision,Recall,F1-scoreを用いて評価\
 　\
 ◆**評価結果**◆\
+　\
+![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)
  
 ---
 
