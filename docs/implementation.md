@@ -90,6 +90,8 @@ PoC-Project\
     
 - 前処理方法（標準化、欠損値処理、ラベル付け 等）
 
+![Image](https://github.com/user-attachments/assets/c8110086-9466-4de2-92a7-4b137b70ab60)
+
 前処理で一番工夫したのはウィンドウ幅についてです。
   
 - データ量や制約条件  
