@@ -36,45 +36,38 @@
   
  
 ◆**1.2 リポジトリ構成**◆\
-　\
-PoC-Project\
-├─ README.md\
-├─ Results/\
-│　　├─ results_of_Autoencoder.png\
-│　　├─ results_of_Isolation Forest.png\
-│　　└─ results_of_One-Class-SVM.png\
-├─ data/\
-│　　├─ eval_features_scaled.csv　  # 評価用データ（前処理済み）\
-│　　└─ train_features_scaled.csv　 # 学習用データ（前処理済み）\
-├─ docs/\
-│　　└─ implementation.md　        # 実装ドキュメント\
-├─ notebooks/\
-│　　└─ PoC_walkthrough.ipynb　  # 実装の Jupyter Notebook\
-├─ src/\
-│　　├─ Autoencoder\
-│　　│　　├─ evaluate.py　     # Autoencoder 評価\
-│　　│　　└─ train.py　        # Autoencoder 学習\
-│　　├─ Isolation-Forest\
-│　　│　　├─ evaluate.py　     # Isolation Forest 評価\
-│　　│　　└─ train.py　        # Isolation Forest 学習\
-│　　├─ One-Class-SVM\
-│　　│　　├─ evaluate.py　     # One-Class-SVM 評価\
-│　　│　　└─ train.py　        # One-Class-SVM 学習\
-│　　├─ preprocessing\
-│　　│　　├─ generate-JSON.py　      # JSONファイル作成\
-│　　│　　├─ generate-features.py　  # 特徴量作成\
-│　　│　　└─normalize-features.py　  # 特徴量正規化\
-└─ requirements.txt         # 依存ライブラリ\
 　
-
-
-
-
-◆**1.3 結果**◆\
-　\
-
-  
-- どのモデルも高い精度を出すことができました。詳しい結果の表やグラフは「7 結果のまとめ」をご確認ください。
+```
+PoC-Project
+├─ README.md
+├─ Results/
+│　　├─ results_of_Autoencoder.png
+│　　├─ results_of_Isolation Forest.png
+│　　└─ results_of_One-Class-SVM.png
+├─ data/
+│　　├─ eval_features_scaled.csv　  # 評価用データ（前処理済み）
+│　　└─ train_features_scaled.csv　 # 学習用データ（前処理済み）
+├─ docs/
+│　　└─ implementation.md　        # 実装ドキュメント
+├─ notebooks/
+│　　└─ PoC_walkthrough.ipynb　  # 実装の Jupyter Notebook
+├─ src/
+│　　├─ Autoencoder
+│　　│　　├─ evaluate.py　     # Autoencoder 評価
+│　　│　　└─ train.py　        # Autoencoder 学習
+│　　├─ Isolation-Forest
+│　　│　　├─ evaluate.py　     # Isolation Forest 評価
+│　　│　　└─ train.py　        # Isolation Forest 学習
+│　　├─ One-Class-SVM
+│　　│　　├─ evaluate.py　     # One-Class-SVM 評価
+│　　│　　└─ train.py　        # One-Class-SVM 学習
+│　　├─ preprocessing
+│　　│　　├─ generate-JSON.py　      # JSONファイル作成
+│　　│　　├─ generate-features.py　  # 特徴量作成
+│　　│　　└─normalize-features.py　  # 特徴量正規化
+└─ requirements.txt         # 依存ライブラリ
+　
+```
 
 
 ---
@@ -220,7 +213,6 @@ def extract_features(current_data, speed_data, window_size):
 特徴量にするのは、モータの電流と速度、それと電流と速度の比を使います。\
 それらをウィンドウ幅ごとに<ins>平均値</ins>、<ins>分散</ins>、<ins>最小値</ins>、<ins>最大値</ins>を算出します。
 
- 
 ---
 
 ## 3. 実装構成
@@ -238,10 +230,28 @@ def extract_features(current_data, speed_data, window_size):
 
 ## 5. 評価指標
 
-![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)\
-表１：評価結果
-<img width="1938" height="537" alt="Image" src="https://github.com/user-attachments/assets/7f991f7a-8d67-4782-9c37-e24e2315aeea" />
-図２：評価結果グラフ\
+- 評価用特徴量数算出スクリプト
+```
+import pandas as pd
+
+# 保存した評価用特徴量を読み込み
+eval_df  = pd.read_csv("eval_features.csv", encoding="utf-8-sig")
+
+# ラベル件数をカウント
+label_counts = eval_df["label"].value_counts().sort_index()
+
+print("=== Evaluation Data Label Summary ===")
+print(f"正常 (label=1)   : {label_counts.get(1, 0)} 件")
+print(f"異常 (label=-1) : {label_counts.get(-1, 0)} 件")
+print(f"合計             : {len(eval_df)} 件")
+  ```
+- 出力結果
+```
+=== Evaluation Data Label Summary ===
+正常 (label=1)   : 612 件
+異常 (label=-1) : 129 件
+合計             : 741 件
+```
  \
 Accuracy：全体のうち、正しく分類できた割合\
 Accuracy = (TP + TN) / (TP + TN + FP + FN)\
