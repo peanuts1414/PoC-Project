@@ -1,8 +1,11 @@
 # Implementation
 
 ## 1. 概要
-　本ドキュメントは、製造データを対象とした異常検知 PoC の実装内容を整理したものです。  
-　目的、リポジトリ構成、使用データ、実装方法、評価結果の概要を記載します。
+　本ドキュメントは、製造データを対象とした異常検知 PoC の実装内容を整理したものです。  \
+　目的、全体フロー、リポジトリ構成を概要に記載します。\
+　本PoCでは、複数モデルで高精度な異常検知が可能であることを確認しました。\
+　詳しい評価結果は「7. 結果のまとめ」に記載しています。
+
 
  ● **目的**：製造データの異常検知をPoCとして試すことを目的にこのPoCを作成しました。\
 　
@@ -55,27 +58,11 @@ PoC-Project\
 
 
 
-◆**1.3 評価結果**◆\
+◆**1.3 結果**◆\
 　\
-![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)\
-表１：評価結果
-<img width="1938" height="537" alt="Image" src="https://github.com/user-attachments/assets/7f991f7a-8d67-4782-9c37-e24e2315aeea" />
-図２：評価結果グラフ\
- \
-Accuracy：全体のうち、正しく分類できた割合\
-Accuracy = (TP + TN) / (TP + TN + FP + FN)\
- \
-Precision：異常と判定した中で、正しく異常だった割合\
-Precision = TP / (TP + FP)\
- \
-Recall：実際の異常のうち、正しく検出できた割合\
-Recall = TP / (TP + FN)\
- \
-F1-score：PrecisionとRecallのバランスをとった評価指標\
-F1-score = 2 * (Precision * Recall) / (Precision + Recall)
+
   
-- 評価結果の表を見るとどのモデルも高い精度を出せているとわかります。表からの評価だけでは選定しがたいです。
-- グラフを確認すると、どれだけ分離できているかがわかります。特に、Autoencoderは正常と異常をはっきりと分離されていることが視認できます。
+- どのモデルも高い精度を出すことができました。詳しい結果の表やグラフは「7 結果のまとめ」をご確認ください。
 
 
 ---
@@ -238,6 +225,24 @@ def extract_features(current_data, speed_data, window_size):
 ---
 
 ## 5. 評価指標
+
+![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)\
+表１：評価結果
+<img width="1938" height="537" alt="Image" src="https://github.com/user-attachments/assets/7f991f7a-8d67-4782-9c37-e24e2315aeea" />
+図２：評価結果グラフ\
+ \
+Accuracy：全体のうち、正しく分類できた割合\
+Accuracy = (TP + TN) / (TP + TN + FP + FN)\
+ \
+Precision：異常と判定した中で、正しく異常だった割合\
+Precision = TP / (TP + FP)\
+ \
+Recall：実際の異常のうち、正しく検出できた割合\
+Recall = TP / (TP + FN)\
+ \
+F1-score：PrecisionとRecallのバランスをとった評価指標\
+F1-score = 2 * (Precision * Recall) / (Precision + Recall)
+
 - 使用した指標（Accuracy, Precision, Recall, F1-score）  
 - 指標選定の理由  
 
@@ -250,8 +255,14 @@ def extract_features(current_data, speed_data, window_size):
 ---
 
 ## 7. 結果のまとめ
+![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)\
+表１：評価結果
+<img width="1938" height="537" alt="Image" src="https://github.com/user-attachments/assets/7f991f7a-8d67-4782-9c37-e24e2315aeea" />
+図２：評価結果グラフ\
 - 評価結果（スコアの概要）  
-- 考察（得られた知見、制約、注意点）  
+- 考察（得られた知見、制約、注意点）
+  - どのモデルも高い精度を出すことができました。詳しい結果の表やグラフは「7 結果のまとめ」をご確認ください。
+- グラフを確認すると、どれだけ分離できているかがわかります。特に、Autoencoderは正常と異常をはっきりと分離されていることが視認できます。
 
 ---
 
