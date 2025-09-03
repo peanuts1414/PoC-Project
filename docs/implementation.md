@@ -145,7 +145,7 @@ def detect_windows(cycle_values):
  次に、設定したワンサイクルの始まりと終わり、サイズを「windows」の中にタプルとして格納します。\
  サイズは単純に終わりから始まりを引いたものになります。
 
- - 下記出力例
+ - 下記出力イメージ
 
    ```
    {
@@ -216,7 +216,26 @@ def extract_features(current_data, speed_data, window_size):
 ---
 
 ## 3. 実装構成
-- ディレクトリ構造（例: `src/`, `notebooks/`, `data/`）  
+
+- ディレクトリ構造
+```
+src/
+├─ Autoencoder/
+│   ├─ train.py        # Autoencoder 学習
+│   └─ evaluate.py     # Autoencoder 評価
+├─ Isolation-Forest/
+│   ├─ train.py        # Isolation Forest 学習
+│   └─ evaluate.py     # Isolation Forest 評価
+├─ One-Class-SVM
+│　　├─ evaluate.py　   # One-Class-SVM 評価
+│　　└─ train.py　      # One-Class-SVM 学習
+└─ preprocessing/
+    ├─ generate-features.py   # 特徴量作成
+    └─ normalize-features.py  # 特徴量正規化
+
+```
+
+ 
 - 各ファイルの役割  
 
 ---
