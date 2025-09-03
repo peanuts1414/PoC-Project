@@ -60,7 +60,19 @@ PoC-Project\
 ![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)\
 表１：評価結果
 <img width="1938" height="537" alt="Image" src="https://github.com/user-attachments/assets/7f991f7a-8d67-4782-9c37-e24e2315aeea" />
-図２：評価結果グラフ
+図２：評価結果グラフ\
+ \
+Accuracy：全体のうち、正しく分類できた割合\
+Accuracy = (TP + TN) / (TP + TN + FP + FN)\
+ \
+Precision：異常と判定した中で、正しく異常だった割合\
+Precision = TP / (TP + FP)\
+ \
+Recall：実際の異常のうち、正しく検出できた割合\
+Recall = TP / (TP + FN)\
+ \
+F1-score：PrecisionとRecallのバランスをとった評価指標\
+F1-score = 2 * (Precision * Recall) / (Precision + Recall)
   
 - 評価結果の表を見るとどのモデルも高い精度を出せているとわかります。表からの評価だけでは選定しがたいです。
 - グラフを確認すると、どれだけ分離できているかがわかります。特に、Autoencoderは正常と異常をはっきりと分離されていることが視認できます。
@@ -173,6 +185,39 @@ def filter_windows(windows):
 　例で言うと、0〜10までを繰り返すサイクルがあるとき、0～4までのデータが無いため5から始まってしまい、他のサイズより小さいものが出来上がってしまう場合です。\
 　注意点として、データの中に大幅に速度の違うデータがあるとき、データ量に差ができてしまい必要なデータまでフィルタリングされてしまう場合があります。\
 　今回は80％としきい値を設けましたが、この点に関しては速度ごとにしきい値を設けるなどの改善余地があるかと思います。
+
+ - 特徴量抽出スクリプト
+
+```
+# ===== 特徴量抽出関数 =====
+def extract_features(current_data, speed_data, window_size):
+    feats = []
+    for i in range(0, len(current_data), window_size):
+        cur_win = current_data[i:i+window_size]
+        spd_win = speed_data[i:i+window_size]
+        if len(cur_win) == window_size and len(spd_win) == window_size:
+            ratio = cur_win / np.where(spd_win == 0, 1, spd_win)  # ゼロ割防止
+            feats.append({
+                # 電流特徴量
+                "current_mean": np.mean(cur_win),
+                "current_std": np.std(cur_win),
+                "current_min": np.min(cur_win),
+                "current_max": np.max(cur_win),
+                # 速度特徴量
+                "speed_mean": np.mean(spd_win),
+                "speed_std": np.std(spd_win),
+                "speed_min": np.min(spd_win),
+                "speed_max": np.max(spd_win),
+                # 電流/速度比
+                "cur_spd_ratio_mean": np.mean(ratio),
+                "cur_spd_ratio_std": np.std(ratio),
+                "cur_spd_ratio_min": np.min(ratio),
+                "cur_spd_ratio_max": np.max(ratio),
+            })
+    return pd.DataFrame(feats)
+
+```
+
  
 ---
 
