@@ -237,6 +237,9 @@ src/
     └─ normalize-features.py  # 特徴量正規化
 
 ```
+### preprocessing
+前処理工程に必要なスクリプトが用意されています。
+
 
  
 - 各ファイルの役割  
