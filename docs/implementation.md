@@ -24,7 +24,7 @@
 
 ◆**1.1 全体フロー**◆\
  \
-<img width="1398" height="950" alt="Image" src="https://github.com/user-attachments/assets/0e07e116-24f9-4695-b5ba-fa0c902680d3" />
+<img width="1015" height="690" alt="Image" src="https://github.com/user-attachments/assets/0081c7d3-a27e-4901-8713-1df53b995d9e" />
 図１：全体フロー図
  
 
