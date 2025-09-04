@@ -287,23 +287,26 @@ src/
 
   最適化問題は以下の式で表されます。\
 
-  $$w,ξi​,ρmin​21​∥w∥2+νn1​i=1∑n​ξi​−ρ$$
+<img width="646" height="248" alt="Image" src="https://github.com/user-attachments/assets/fcc2f80c-34fe-4ed6-839c-ffe99420cb20" />
   
 
 
 - **Autoencoder**  
-  入力データを潜在空間に圧縮・復元し、再構成誤差の大きさを異常度とする。特徴量間の関係を捉えやすく、非線形な異常検知に強い。
+  入力データを潜在空間に圧縮・復元し、再構成誤差の大きさを異常度とする。特徴量間の関係を捉えやすく、非線形な異常検知に強いです。
+  Autoencoderの算出式は下記式になります。
+  
 
-また、入力特徴量はセンサーから取得した電流値を中心に用い、標準化処理を行った上でモデルに入力した。  
-主要なハイパーパラメータは以下の通りである。
+また、入力特徴量はセンサーから取得した電流値を中心に用い、標準化処理を行った上でモデルに入力しました。  
+今回使ったモデルの主要なハイパーパラメータは以下の通りです。
 
-- Isolation Forest: n_estimators=100, max_samples=256  
-- One-Class SVM: kernel=rbf, ν=0.05, γ=’scale’  
-- Autoencoder: 隠れ層 [64, 32, 64], 活性化関数 ReLU, 学習エポック数 50
-
-- 使用モデル（Isolation Forest, One-Class SVM, Autoencoder）  
-- モデルの概要説明  
-- モデル選定の理由  
+- 入力特徴量数：12（feature_cols）
+- エンコーダ構造：入力 → 16 → 8 → 4（活性化関数は ReLU）
+- デコーダ構造：4 → 8 → 16 → 出力（活性化関数は ReLU）
+- 損失関数：MSELoss
+- 最適化手法：Adam
+- 学習率 (learning_rate)：1e-3
+- エポック数 (num_epochs)：40
+- バッチサイズ (batch_size)：64
 
 ---
 
