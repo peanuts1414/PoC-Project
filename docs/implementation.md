@@ -270,7 +270,8 @@ src/
 本PoCでは、異常検知の手法として Isolation Forest、One-Class SVM、Autoencoder を採用しました。\
 いずれも教師なし学習に基づくアプローチであり、ラベル付き異常データが限られている製造現場の課題に適している。
 
- ◆**Isolation Forest**◆ 
+ ◆**Isolation Forest**◆\
+  \
   Isolation Forest は、データをランダムに分割して木構造を作り、あるサンプルが「どれくらい少ない分割で孤立するか」を測定します。
 　異常値は通常のデータよりも早く孤立するため、平均パス長が短くなる傾向があります。\
   Isolation Forestは計算が高速で、大規模データに適しています。\
@@ -281,7 +282,8 @@ src/
 
 <img width="588" height="155" alt="Image" src="https://github.com/user-attachments/assets/868e30ff-2b01-4692-a783-ae4db4fa798d" />
 
- ◆**One-Class SVM**◆  
+ ◆**One-Class SVM**◆\
+  \
   正常データの分布を高次元空間に写像し、境界を学習することで外れ値を判定します。\
   非線形な境界を扱えるが、データ量が多い場合は計算コストが高くなることがネックです。\
 
@@ -291,7 +293,8 @@ src/
   
 
 
- ◆**Autoencoder** ◆ 
+ ◆**Autoencoder** ◆\
+  \
   入力データを潜在空間に圧縮・復元し、再構成誤差の大きさを異常度とする。特徴量間の関係を捉えやすく、非線形な異常検知に強いです。\
   Autoencoderの算出式は下記式になります。
 
