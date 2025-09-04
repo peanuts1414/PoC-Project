@@ -261,7 +261,7 @@ src/
 - PoC_walkthrough.ipynb： 実装の流れをステップごとに実行できる形式でまとめたもの。
   
 　EDA（探索的データ分析）、前処理の可視化、モデル比較の実験を含む。\
-　ディレクトリ構造の中からは外していますが、一連の実装工程が確認できるので[PoC_walkthrough.ipynb](PoC-Project/notebooks/PoC_walkthrough.ipynb)もご確認ください。
+　ディレクトリ構造の中からは外していますが、一連の実装工程が確認できるので[PoC_walkthrough.ipynb](../notebooks/PoC_walkthrough.ipynb)もご確認ください。
 
 ---
 
