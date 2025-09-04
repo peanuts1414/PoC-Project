@@ -233,14 +233,27 @@ src/
 │　　├─ evaluate.py　   # One-Class-SVM 評価
 │　　└─ train.py　      # One-Class-SVM 学習
 └─ preprocessing/
+    ├─ generate-JSON.py       # JSONファイル作成
     ├─ generate-features.py   # 特徴量作成
     └─ normalize-features.py  # 特徴量正規化
 
 ```
-### preprocessing
+### 3.1 前処理 (src/preprocessing/)
+
 前処理工程に必要なスクリプトが用意されています。
 
+- generate-features.py： モータ電流値・速度などのデータから特徴量を生成
+- normalize-features.py： 標準化を実施し学習可能な形へ整形
+- generate-JSON.py： JSON形式への変換を行い、サイクル単位で利用可能にする
 
+### 3.2 モデル実装 (src/各モデル名/)
+
+各モデルフォルダには train.py と evaluate.py を配置し、役割を分離しました。
+
+- train.py： 学習処理を実行し、学習済みモデルを保存
+- evaluate.py： 評価データを入力し、精度指標を算出
+
+この構成により、異なるモデル間で同じインターフェースを用いて比較が可能です。
  
 - 各ファイルの役割  
 
