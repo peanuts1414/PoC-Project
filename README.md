@@ -12,7 +12,7 @@
  
 ## アプローチ
  
-<img width="1060" height="691" alt="Image" src="https://github.com/user-attachments/assets/fabce3cb-9a9c-454b-bafe-760ddfbe0d9b" />
+<img width="769" height="504" alt="Image" src="https://github.com/user-attachments/assets/55ff316c-5d4b-4814-8227-fe79bc15a9ef" />
 
   
 - サーボモータが動作したときの電流値のデータをPLCから取得しました。\
