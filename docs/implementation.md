@@ -229,7 +229,9 @@ def extract_features(current_data, speed_data, window_size):
 ガタつきを想定してノイズを付与するなどの疑似異常を作成します。\
  \
  詳しくは、[generate_anomaly_for_PoC.ipynb](../notebooks/generate_anomaly_for_PoC.ipynb)をご確認ください。\
- こちらに実装に使ったスクリプトと調整方法を記載しています。
+ こちらに実装に使ったスクリプトと調整方法を記載しています。\
+ \
+ 一点注意点として、評価用に疑似異常データを作成する場合、学習用データとして使うデータから作ると過学習を起こしてしまうリスクがあります。\
 
 
 ---
@@ -285,7 +287,9 @@ src/
 
 本PoCでは、異常検知の手法として Isolation Forest、One-Class SVM、Autoencoder を採用しました。\
 いずれも教師なし学習に基づくアプローチであり、ラベル付き異常データが限られている製造現場の課題に適している。\
- \
+ 
+ ### 4.1 各モデルの特徴
+ 
  ◆**Isolation Forest**◆\
   \
   Isolation Forest は、データをランダムに分割して木構造を作り、あるサンプルが「どれくらい少ない分割で孤立するか」を測定します。\
@@ -315,7 +319,7 @@ src/
 - エポック数 (num_epochs)：40
 - バッチサイズ (batch_size)：64
 
-◆**モデル採用理由について**◆
+### 4.2 モデル採用理由について
 
 本PoCでは、異常検知手法として Isolation Forest, One-Class SVM, Autoencoder の3種類を採用しました。\
 それぞれの採用理由は以下の通りです。
@@ -340,10 +344,9 @@ src/
 
 ## 5. 評価指標
 
+### 5.1 評価用データサンプルの総数
 - 評価用特徴量数算出スクリプト
 ```
-import pandas as pd
-
 # 保存した評価用特徴量を読み込み
 eval_df  = pd.read_csv("eval_features.csv", encoding="utf-8-sig")
 
@@ -366,7 +369,7 @@ print(f"合計             : {len(eval_df)} 件")
 評価用のデータの全体像を確認するのに使います。\
 今回は評価用のサンプル数が741件、その中で異常サンプルは129件となります。\
 
-
+### 5.2 評価指標について
  \
 Accuracy：全体のうち、正しく分類できた割合\
 Accuracy = (TP + TN) / (TP + TN + FP + FN)\
