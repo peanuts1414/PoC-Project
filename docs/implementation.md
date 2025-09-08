@@ -416,12 +416,19 @@ FN：Falase Negative(偽陰性)異常と判断して、実際は陽性と誤判�
 
 ### 6.2実行方法
 
+◆ 1. 環境準備 ◆\
 私が実行したpythonのバージョンは「3.9.13」です。\
 リポジトリ上にrequirements.txtを用意しています。\
-環境をインストールしてください。
+その他の環境をインストールしてください。
+ 
 ```
 pip install -r requirements.txt
 ```
+　\
+◆ 2. データ準備 ◆\
+ \
+今回使用したデータとして[data/train_features_scaled.csv](../data/train_features_scaled.csv)と[data/eval_features_scaled.csv](../data/eval_features_scaled.csv)を用意しました。
+
 
 
 - 環境構築（`pip install -r requirements.txt`）  
