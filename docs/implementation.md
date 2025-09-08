@@ -406,6 +406,24 @@ FN：Falase Negative(偽陰性)異常と判断して、実際は陽性と誤判�
 ---
 
 ## 6. 実行方法
+
+### 6.1 実行方法ながれ
+
+1. 環境準備
+2. データ準備
+3. 実行手順
+4. ノートブックでの実行方法
+
+### 6.2実行方法
+
+私が実行したpythonのバージョンは「3.9.13」です。\
+リポジトリ上にrequirements.txtを用意しています。\
+環境をインストールしてください。
+```
+pip install -r requirements.txt
+```
+
+
 - 環境構築（`pip install -r requirements.txt`）  
 - 実行コマンド（例: Jupyter Notebook の起動方法）  
 
