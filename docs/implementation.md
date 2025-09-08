@@ -456,7 +456,7 @@ Jupyter Notebookを起動し、notebooks/PoC_walkthrough.ipynbを開きます。
 ## 7. 結果のまとめ
 ![Image](https://github.com/user-attachments/assets/2b5234c7-93a9-49b5-a938-e25242dab737)\
 表１：評価結果
-<img width="1938" height="537" alt="Image" src="https://github.com/user-attachments/assets/7f991f7a-8d67-4782-9c37-e24e2315aeea" />
+<img width="1938" height="537" alt="Image" src="https://github.com/user-attachments/assets/3b397190-994b-49b5-bd15-0251c1dfc473" />
 図２：評価結果グラフ\
 - 評価結果（スコアの概要）  
 - 考察（得られた知見、制約、注意点）
