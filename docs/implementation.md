@@ -428,7 +428,7 @@ pip install -r requirements.txt
 ◆ 2. データ準備 ◆\
  \
 今回使用したデータとして[data/train_features_scaled.csv](../data/train_features_scaled.csv)と[data/eval_features_scaled.csv](../data/eval_features_scaled.csv)を用意しました。\
-「train_features_scaled.csv」には学習用の特徴量、「eval_features_scaled.csv」には評価用の特徴量が格納されています。
+「train_features_scaled.csv」には学習用の特徴量、「eval_features_scaled.csv」には評価用の正常と異常がラベル付けされた特徴量が格納されています。
 
 
 
