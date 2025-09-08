@@ -425,7 +425,7 @@ pip install -r requirements.txt
 ```
 リポジトリのクローン
 ```
-git clone <リポジトリURL>
+git clone <https://github.com/peanuts1414/PoC-Project>
 cd <PoC-Project>
 pip install -r requirements.txt
 ```
@@ -440,8 +440,11 @@ pip install -r requirements.txt
  \
  ◆ 3. 実行手順 ◆\
 　\
- 1. 特徴量の作成 （※特徴量の作成は元データ非公開のため動作確認する場合はパスしてください。）
-    - preprocess/generate-JSON.pyで
+Jupyter Notebookを起動し、notebooks/PoC_walkthrough.ipynbを開きます。\
+あとは上から順にセルを実行することで、データの前処理 → 学習 → 評価 → 可視化の一連の流れを再現できます。\
+ \ 
+（※特徴量の作成は元データ非公開のため動作確認する場合は特徴量の正規化工程後までパスしてください。）
+
 
 
 
