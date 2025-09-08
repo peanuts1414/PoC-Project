@@ -411,8 +411,7 @@ FN：Falase Negative(偽陰性)異常と判断して、実際は陽性と誤判�
 
 1. 環境準備
 2. データ準備
-3. 実行手順
-4. ノートブックでの実行方法
+3. jupyter notebookでの実行方法
 
 ### 6.2実行方法
 
@@ -424,6 +423,12 @@ FN：Falase Negative(偽陰性)異常と判断して、実際は陽性と誤判�
 ```
 pip install -r requirements.txt
 ```
+リポジトリのクローン
+```
+git clone <リポジトリURL>
+cd <PoC-Project>
+pip install -r requirements.txt
+```
 　\
 ◆ 2. データ準備 ◆\
  \
@@ -431,7 +436,12 @@ pip install -r requirements.txt
 「train_features_scaled.csv」には学習用の特徴量、「eval_features_scaled.csv」には評価用の正常と異常がラベル付けされた特徴量が格納されています。\
  \
  ※ 本実装では社内製品のデータを元に実装を行ったため、情報漏洩を懸念して元データは非公開にさせていただいております。\
-　　そのため、実際に動作を実行できるのは特徴量が作成された後からになります。
+　そのため、実際に動作を実行できるのは特徴量が作成された後からになります。\
+ \
+ ◆ 3. 実行手順 ◆\
+　\
+ 1. 特徴量の作成 （※特徴量の作成は元データ非公開のため動作確認する場合はパスしてください。）
+    - preprocess/generate-JSON.pyで
 
 
 
