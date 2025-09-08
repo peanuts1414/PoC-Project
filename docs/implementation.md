@@ -367,21 +367,33 @@ print(f"合計             : {len(eval_df)} 件")
 ```
 上記のスクリプトは、評価用のデータの正常件数、異常件数、合計を記すためのスクリプトです。\
 評価用のデータの全体像を確認するのに使います。\
-今回は評価用のサンプル数が741件、その中で異常サンプルは129件となります。\
+今回は評価用のサンプル数が741件、その中で正常は612件、異常は129件となります。\
+正常と異常の件数に偏りがあるため、Accuracyだけを見てモデルの判断をするのは評価が不十分になる可能性があります。\
+そのため、Accuracyと合わせて他の評価指標も参考にモデルを評価する必要があります。
 
 ### 5.2 評価指標について
- \
-Accuracy：全体のうち、正しく分類できた割合\
-Accuracy = (TP + TN) / (TP + TN + FP + FN)\
- \
-Precision：異常と判定した中で、正しく異常だった割合\
-Precision = TP / (TP + FP)\
- \
-Recall：実際の異常のうち、正しく検出できた割合\
-Recall = TP / (TP + FN)\
- \
-F1-score：PrecisionとRecallのバランスをとった評価指標\
+```
+Accuracy：全体のうち、正しく分類できた割合
+Accuracy = (TP + TN) / (TP + TN + FP + FN)
+ 
+Precision：異常と判定した中で、正しく異常だった割合
+Precision = TP / (TP + FP)
+ 
+Recall：実際の異常のうち、正しく検出できた割合
+Recall = TP / (TP + FN)
+ 
+F1-score：PrecisionとRecallのバランスをとった評価指標
 F1-score = 2 * (Precision * Recall) / (Precision + Recall)
+```
+TP：True Positive(真陽性)正常と判断して、実際に正常だったもの\
+TN：True Negative(真陰性)異常と判断して、実際に異常だったもの\
+FP：False Positive(偽陽性)正常と判断して、実際は異常と誤判定したもの\
+FN：Falase Negative(偽陰性)異常と判断して、実際は陽性と誤判定したもの\
+ \
+ポイント：単純にTPとTNの件数を増やして、FPとFNの件数を減らせば各スコアは高くなります。\
+　　　　　<ins>ただし、製造現場や医療現場などミスが許されない現場では異常を厳しく検知しなければなりません。</ins>\
+　　　　　<ins>その場合は特にRecall指標を注意してスコアを高めていく必要があります。</ins>
+
 
 - 使用した指標（Accuracy, Precision, Recall, F1-score）  
 - 指標選定の理由  
